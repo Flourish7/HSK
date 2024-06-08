@@ -1,34 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homeschooling Input Form</title>
+  <style>
+    form {
+      max-width: 600px;
+      margin: auto;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+    }
+    input[type="submit"] {
+      margin-top: 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+  </style>
 </head>
 <body>
-    <h2>Enter Your Child's Information</h2>
-    <form id="homeschoolForm">
-        <label for="age">Age:</label>
-        <input type="number" id="age" name="age" required><br><br>
-        
-        <label for="schoolYear">School Year:</label>
-        <input type="text" id="schoolYear" name="schoolYear" required><br><br>
-        
-        <label for="subject">Subject:</label>
-        <input type="text" id="subject" name="subject" required><br><br>
-        
-        <label for="topic">Topic:</label>
-        <input type="text" id="topic" name="topic"><br><br>
-        
-        <label for="aspiration">Aspirations (e.g., Doctor, Engineer):</label>
-        <input type="text" id="aspiration" name="aspiration"><br><br>
-        
-        <input type="submit" value="Submit">
-    </form>
+  <form action="YOUR_GPT_API_ENDPOINT" method="post">
+    <label for="age">Child's Age:</label>
+    <input type="text" id="age" name="age">
     
-    <h2>Generated Content</h2>
-    <div id="output"></div>
+    <label for="school_year">School Year:</label>
+    <input type="text" id="school_year" name="school_year">
     
-    <script src="script.js"></script>
+    <label for="subject">Subject:</label>
+    <input type="text" id="subject" name="subject">
+    
+    <label for="topic">Topic:</label>
+    <input type="text" id="topic" name="topic">
+    
+    <label for="aspirations">Aspirations (e.g., Doctor, Engineer):</label>
+    <input type="text" id="aspirations" name="aspirations">
+    
+    <label for="query">Additional Query:</label>
+    <textarea id="query" name="query" rows="4" cols="50"></textarea>
+    
+    <input type="submit" value="Submit">
+  </form>
 </body>
 </html>
