@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    form {
+      max-width: 600px;
+      margin: auto;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+    }
+    input[type="submit"] {
+      margin-top: 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <form action="https://home-school-uk.herokuapp.com/submit" method="post">
+    <label for="age">Child's Age:</label>
+    <input type="text" id="age" name="age">
+    
+    <label for="school_year">School Year:</label>
+    <input type="text" id="school_year" name="school_year">
+    
+    <label for="subject">Subject:</label>
+    <input type="text" id="subject" name="subject">
+    
+    <label for="topic">Topic:</label>
+    <input type="text" id="topic" name="topic">
+    
+    <label for="aspirations">Aspirations (e.g., Doctor, Engineer):</label>
+    <input type="text" id="aspirations" name="aspirations">
+    
+    <label for="query">Additional Query:</label>
+    <textarea id="query" name="query" rows="4" cols="50"></textarea>
+    
+    <input type="submit" value="Submit">
+  </form>
+  
+  <div id="response"></div>
+  
+  <script>
+    document.querySelector('form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const response = await fetch(e.target.action, {
+        method: 'POST',
+        body: formData
+      });
+      const result = await response.json();
+      document.getElementById('response').innerText = result.response;
+    });
+  </script>
+</body>
+</html>
